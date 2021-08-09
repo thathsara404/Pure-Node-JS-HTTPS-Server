@@ -11,7 +11,7 @@ const options = {
 };
 
 
-const prepareURL = (url) => {
+const preparePath = (url) => {
     let filePath = '.' + url;
     if (filePath == './') {
         filePath = './index.html';
@@ -38,7 +38,7 @@ const getMimeType = (filePath) => {
 
 https.createServer(options, function (req, res) {
     
-    const filePath = prepareURL(req.url);
+    const filePath = preparePath(req.url);
     const contentType = getMimeType(filePath);
 
     fs.readFile(filePath, function(error, content) {
